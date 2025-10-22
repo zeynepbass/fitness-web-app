@@ -1,15 +1,20 @@
-import React from 'react'
-import Header from "./header"
-import Footer from "./footer"
-const layout = ({children}) => {
+"use client";
+
+import { usePathname } from "next/navigation";
+import Header from "../screens/header";
+import Footer from "../screens/footer";
+
+export default function Layout({ children }) {
+  const pathname = usePathname();
+
+
+  const hideLayout = pathname === "/" || pathname === "/register";
+
   return (
     <>
-   <Header/>
-      {children}
-      <Footer/>
+      {!hideLayout && <Header />}
+      <main className="min-h-screen">{children}</main>
+      {!hideLayout && <Footer />}
     </>
-
-  )
+  );
 }
-
-export default layout
