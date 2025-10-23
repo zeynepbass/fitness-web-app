@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
-  if (pathname === "/" || pathname === "/register") return null;
+  if (pathname === "/") return null;
 
   return (
     <nav className="bg-blue-400 text-white p-4 flex justify-between">
