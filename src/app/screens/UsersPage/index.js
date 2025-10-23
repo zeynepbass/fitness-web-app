@@ -4,7 +4,7 @@ import { useState } from "react";
 import Login from "../Login";
 import Register from "../Register";
 
-const Index = () => {
+export default function Index() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
@@ -55,5 +55,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;

@@ -1,4 +1,4 @@
-import WorkoutCard from "@/app/components/Cards";
+import WorkoutCard from "../components/Cards"
 
 export default async function WorkoutsPage() {
   let workouts = [];
@@ -12,7 +12,7 @@ export default async function WorkoutsPage() {
   }
 
   return (
-    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {workouts.map((workout) => (
         <WorkoutCard key={workout.id} workout={workout} />
       ))}
