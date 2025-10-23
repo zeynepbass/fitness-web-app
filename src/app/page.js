@@ -1,8 +1,4 @@
-import Login from "./screens/login"
+import UsersPage from "./screens/UsersPage"
 export default function Home() {
-  return (
-    <div >
-     <Login/>
-    </div>
-  );
+  return <UsersPage/>
 }
