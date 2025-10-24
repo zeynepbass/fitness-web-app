@@ -1,13 +1,12 @@
 "use client";
 
 import ThemeToggle from "@/app/components/ThemeToggle";
-import { usePathname } from "next/navigation";
+import { usePathname,useRouter } from "next/navigation";
 import SearchBar from "../../components/SearchBar";
 
 export default function Navbar() {
   const pathname = usePathname();
-
-
+const navigate=useRouter();
   if (pathname === "/") return null;
 
   return (
@@ -15,11 +14,11 @@ export default function Navbar() {
       <nav className="bg-blue-500 dark:bg-gray-800 text-white px-6 py-4 flex justify-between items-center shadow-md">
 
         <div className="flex items-center gap-3">
-          <h1 className="font-bold text-xl tracking-wide">Fitness App</h1>
+          <h1 className="font-bold text-xl tracking-wide" onClick={()=>navigate.push("/workouts")}>Fitness App</h1>
         </div>
 
 
-        <div className="hidden md:flex w-1/3">
+        <div className="hidden md:flex w-1/2">
           <SearchBar />
         </div>
 

@@ -2,7 +2,7 @@ import InputType from "../../components/InputField";
 
 export default function Index() {
   return (
-    <div className="w-1/2 flex items-center relative">
+    <div className="w-full flex items-center relative">
       <InputType
         type="text"
         placeholder="Ara..."

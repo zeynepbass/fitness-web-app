@@ -1,8 +1,12 @@
+"use client"
 import React from "react";
-
+import { usePathname } from "next/navigation";
+import Endeks from "../../components/Endeks"
 export default function index() {
+    const pathname = usePathname();
+  if (pathname=== "/profil") return null;
   return (
-    <div className="w-full bg-blue-500 min-h-screen py-[5%]">
+    <div className="w-full bg-blue-500 min-h-screen py-[5%] dark:bg-gray-800">
       <a href="#">
         <img
           src="https://static.vecteezy.com/system/resources/previews/007/296/447/non_2x/user-icon-in-flat-style-person-icon-client-symbol-vector.jpg"
@@ -22,7 +26,7 @@ export default function index() {
         <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
         <a
           href="#"
-          className="inline-flex items-center px-4 py-3  text-sm font-medium text-center text-white  rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="inline-flex items-center px-4 py-3  text-sm font-medium dark:bg-gray-700 text-center text-white  rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Profile Git
           <svg
@@ -51,7 +55,7 @@ export default function index() {
           <li>Deneyim:</li>
         </ul>
 
-    
+       <Endeks/>
       </div>
     </div>
   );

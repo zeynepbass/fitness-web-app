@@ -1,10 +1,11 @@
 import React from 'react'
-
+import Card from "../../components/Cards"
 const index = () => {
   return (
-    <div>
-      ana sayfa
+    <div className='flex flex-row'>
+         <Card/>
     </div>
+
   )
 }
 

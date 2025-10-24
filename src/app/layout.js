@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "./screens/Header";
-import SolSidebar from "./screens/SolSidebar"; // <-- yolu projenize göre düzeltin
+import SolSidebar from "./screens/SolSidebar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,12 +30,12 @@ export default function RootLayout({ children }) {
      
         <div className="flex min-h-[calc(100vh-64px)]"> 
      
-          <aside className="w-80 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 hidden md:block">
+          <aside className="w-80 bg-white dark:bg-gray-800 hidden md:block">
             <SolSidebar />
           </aside>
 
 
-          <main className="flex-1 p-6">
+          <main className="flex-1 p-6 bg-white dark:bg-gray-800">
             {children}
           </main>
         </div>

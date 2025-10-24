@@ -13,7 +13,7 @@ export default function Index() {
   ];
 
   return (
-    <div className="w-full bg-gray-100 pt-5">
+    <div className="w-full pt-5 ">
       <TabMenu activeId={activeId} setActiveId={setActiveId} Menu={Menu} />
       <div className="p-6">
         {activeId===1 && <HomePage/>}
