@@ -1,6 +1,6 @@
-
-"use client";
-import { useState } from "react";
+"use client"
+import Modal from "../../components/Modal"
+import { useState } from 'react';
 import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 
@@ -27,9 +27,13 @@ export default function BMICalculator() {
 
     setStatus(statusText);
   };
-
+const [open,setOpen]=useState(false)
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-700 p-5 rounded-2xl shadow-lg mt-10">
+    <>
+
+    <Modal open={open} setOpen={setOpen}/>
+    <div className="max-w-md mx-auto bg-white dark:bg-gray-700 p-5 rounded-2xl shadow-lg mt-10"
+    onClick={()=>setOpen(true)}>
       <h2 className="text-md  mb-6 text-center text-gray-800 dark:text-white">
         Vücut Kitle Endeksi (BMI) Hesapla
       </h2>
@@ -65,6 +69,6 @@ export default function BMICalculator() {
           <p className="text-gray-600 dark:text-gray-300">{status}</p>
         </div>
       )}
-    </div>
+    </div>    </>
   );
 }
