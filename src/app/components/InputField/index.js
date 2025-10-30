@@ -5,8 +5,9 @@ export default function InputField({ label, type, placeholder }) {
         <label className="text-blue-400 font-bold dark:text-gray-200 ">{label}</label>
         <input
           type={type}
+          className={` ${type === "file" ? "hidden" : "w-full   border-b  placeholder-gray-400 text-[15px] border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"}`}
           placeholder={placeholder}
-          className="w-full   border-b  placeholder-gray-400 text-[15px] border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+
         />
       </>
     );
