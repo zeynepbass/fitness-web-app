@@ -22,15 +22,15 @@ export default function index() {
     />
   
     <div className="mt-5">
-      <Link href="/profil">
+
         <h5 className="mb-2 text-2xl font-bold text-center tracking-tight text-gray-900 dark:text-white">
           Profil Bilgileri
         </h5>
-      </Link>
+
   
       <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-        <a
-          href="#"
+        <Link
+          href="/profil"
           className="inline-flex items-center px-4 py-3 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
         >
           Profile Git
@@ -49,7 +49,7 @@ export default function index() {
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
-        </a>
+        </Link>
       </h2>
   
       <ul className="max-w-md space-y-1 text-white list-disc list-inside dark:text-gray-400">
