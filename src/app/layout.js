@@ -1,7 +1,7 @@
+// app/layout.js (veya app/layout.tsx)
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "./screens/Header";
-import SolSidebar from "./screens/SolSidebar";
 import "./globals.css";
+import LayoutWrapper from "./screens/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,21 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white`}
       >
-
-        <Header />
-
-     
-        <div className="flex min-h-[calc(100vh-64px)]"> 
-     
-          <aside className="w-80 bg-white dark:bg-gray-800 hidden md:block">
-            <SolSidebar />
-          </aside>
-
-
-          <main className="flex-1 p-6 bg-white dark:bg-gray-800">
-            {children}
-          </main>
-        </div>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

@@ -32,7 +32,7 @@ export default function Index() {
 </div>
 
           <div className="bg-white w-full   overflow-auto p-6  rounded-b-2xl shadow-gray-100 shadow-md">
-            {isLogin ? <Login /> : <Register />}
+            {activeId===1 ? <Login /> : <Register />}
           </div>
 
         </div>

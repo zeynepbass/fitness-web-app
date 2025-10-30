@@ -1,13 +1,13 @@
 "use client";
 
 import ThemeToggle from "@/app/components/ThemeToggle";
-import { usePathname,useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import SearchBar from "../../components/SearchBar";
-
+import Link from "next/link"
 export default function Navbar() {
-  const pathname = usePathname();
+
 const navigate=useRouter();
-  if (pathname === "/") return null;
+
 
   return (
 
@@ -25,7 +25,17 @@ const navigate=useRouter();
 
         <div className="flex items-center space-x-5">
           <ThemeToggle />
-          <a
+          <Link
+            href="/kayit-ettiklerin"
+            className="transition-transform hover:scale-110 hover:text-yellow-300"
+            title="kayitOl"
+          >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+</svg>
+
+          </Link>
+          <Link
             href="/profil"
             className="transition-transform hover:scale-110 hover:text-yellow-300"
             title="Profil"
@@ -49,7 +59,13 @@ const navigate=useRouter();
                 d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
               />
             </svg>
-          </a>
+          </Link>
+          <Link href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+</svg>
+
+          </Link>
         </div>
       </nav>
 
