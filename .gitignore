@@ -1,0 +1,29 @@
+# Node.js genel
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# Next.js
+.next/
+out/
+dist/
+
+# Backend build dosyaları
+build/
+.env
+.env.local
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
