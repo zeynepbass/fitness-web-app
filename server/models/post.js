@@ -5,6 +5,7 @@ const postSchema = new mongoose.Schema(
     baslik: { type: String},
     aciklama: { type: String },
     email: { type: String},
+    rol: { type: String},
     resim: { type: String, default: null }, 
   },
   { timestamps: true } 

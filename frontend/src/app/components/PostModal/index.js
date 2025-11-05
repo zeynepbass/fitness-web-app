@@ -4,18 +4,19 @@ import { useState } from "react";
 import Button from "../Button";
 import InputType from "../InputField";
 import { useMutation } from "@tanstack/react-query";
-import { create } from "../../services/postService";
+import { create,get } from "../../services/postService";
 
 export default function PostModal({ open, setOpen }) {
   const [file, setFile] = useState(null);
   const token =JSON.parse(localStorage.getItem("token"));
   const email = token?.kullanici?.email || "";
-
+const rol=token?.kullanici?.rol || "";
   const [form, setForm] = useState({
     baslik: "",
     aciklama: "",
     resim: null,
     email: email,
+    rol:rol
   });
 
 
@@ -49,7 +50,7 @@ export default function PostModal({ open, setOpen }) {
     },
     onError: (error) => {
 
-      alert("Gönderi paylaşılırken bir hata oluştu.");
+      alert(`Gönderi paylaşılırken bir hata oluştu. ${error}`);
     },
   });
 
@@ -65,11 +66,14 @@ export default function PostModal({ open, setOpen }) {
     const formData = new FormData();
     formData.append("baslik", form.baslik);
     formData.append("aciklama", form.aciklama);
+    formData.append("rol", form.rol);
+    
     formData.append("email", form.email);
     formData.append("resim", form.resim);
   
 
     mutation.mutate(formData);
+
   };
   
   if (!open) return null;
@@ -128,7 +132,7 @@ export default function PostModal({ open, setOpen }) {
               >
                 <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm3 3a2 2 0 110 4 2 2 0 010-4zm9 9H4l3-4 2 3 3-4 4 5z" />
               </svg>
-              <span>Fotoğraf / Video</span>
+              <span>Fotoğraf</span>
             </label>
 
             {file && (

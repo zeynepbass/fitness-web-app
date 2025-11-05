@@ -1,55 +1,69 @@
-"use client";
-import React from "react";
 
-export default function Card({ posts, email }) {
+
+"use client";
+import Image from "next/image";
+
+export default function Card({ posts, email,handlePin}) {
+
+
+
   return (
     <div className="container max-h-[650px] overflow-y-scroll scroll-smooth">
-      {posts &&
-        posts.map((item) => {
-          return (
-            <article
-              key={item._id}
-              className="m-1 w-full rounded-2xl overflow-hidden shadow-sm border bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 transition-colors"
-              role="article"
-              aria-label="sfvsd"
-            >
-              <div className="flex justify-between p-3">
-                <img
-                  src="fdvd"
-                  alt="İMAGE"
-                  className="w-full h-[100]  object-cover transform transition-transform duration-300 hover:scale-105"
-                />
-                {item.email === email ? (
-                  <button className="p-3">📌</button>
-                ) : (
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
-                      />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              <div className="p-5">
-                <header className="mb-2 ">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {item.baslik} <span>🎖️</span>
-                  </h3>{" "}
-                </header>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                  {item.aciklama}
-                </p>
-                {item.email === email ? null : (
+      {posts.map((item) => (
+        <article
+          key={item._id}
+          className=" p-2 m-3 w-full rounded-2xl overflow-hidden shadow-sm  bg-white dark:bg-gray-800 transition-colors"
+          role="article"
+        >
+          <div className="flex justify-end ">
+            {item.email === email ? (
+              <button
+                className="p-3 text-xl hover:scale-110 transition-transform"
+                onClick={() => handlePin(item._id)}
+              >
+                📌
+              </button>
+            ) : (
+              <button title="Kaydet">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          <Image
+            src={`http://localhost:5233${item.resim}`}
+            alt={item.baslik || "Gönderi Görseli"}
+            width={120}
+            height={120}
+            loading="lazy"
+            className="object-cover p-2 rounded-xl transition-transform duration-300 hover:scale-105"
+          />
+
+          <div className="p-5">
+            <header className="mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {item.baslik} <span>🎖️</span>
+              </h3>
+            </header>
+
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              {item.aciklama}
+            </p>
+          </div>
+          {item.email === email ? null : (
                   <footer className="flex gap-3 flex-wrap pt-2">
                     <button>
                       <svg
@@ -87,10 +101,8 @@ export default function Card({ posts, email }) {
                     Yorum Yap
                   </footer>
                 )}
-              </div>
-            </article>
-          );
-        })}
+        </article>
+      ))}
     </div>
   );
 }

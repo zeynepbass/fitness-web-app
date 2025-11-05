@@ -8,14 +8,6 @@ export default function Select({ people, baslik, onChange }) {
   const [selected, setSelected] = useState(people[0]);
   const [openSelect, setSelect] = useState(false);
 
-  const handleSelect = (person) => {
-    setSelected(person);
-    setSelect(false);
-    if (onChange) {
-      onChange(person.name); 
-       console.log(person.name)
-    }
-  };
 
   return (
     <div className="w-72">
@@ -41,9 +33,9 @@ export default function Select({ people, baslik, onChange }) {
              onClick={() => {
                setSelected(person);
                setSelect(false);
-               if (typeof onChange === "function") {
+
                  onChange(person.name); 
-               }
+               
              }}
              className={`flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-indigo-600 hover:text-white ${
                selected.id === person.id ? "bg-indigo-100 text-indigo-700" : ""
