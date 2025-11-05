@@ -62,10 +62,11 @@ export default function Index({posts}) {
   selected.name !== "TÜMÜ"
     ? posts.filter((item) => item.rol === selected.name)
     : posts;
+
   const renderContent = () => {
     switch (activeId) {
       case 1:
-        return <HomePage posts={filteredPeople} email={email} />;
+        return <HomePage posts={filteredPeople}  email={email} />;
       case 2:
         return <PostsPage open={open} setOpen={setOpen} handlePin={handlePin}  posts={sortedPosts} email={email} />;
       default:

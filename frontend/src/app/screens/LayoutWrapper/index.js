@@ -9,7 +9,7 @@ import Login from "../Login/index"
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
   const [queryClient] = useState(() => new QueryClient());
- const control=localStorage.getItem("token")
+ const control=JSON.parse(localStorage.getItem("token"));
   return (
     <QueryClientProvider client={queryClient}>
       {pathname === "/" ? (

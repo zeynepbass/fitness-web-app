@@ -9,3 +9,11 @@ export const registerUser=async(data)=>{
  const res=await axios.post(`${PATH}/kayit`, data)
  return res.data
 }
+export const deleteUser=async(id)=>{
+  const res=await axios.delete(`${PATH}/kullanici/${id}`)
+  return res.data
+}
+export const deleteUserCold=async(id,data)=>{
+  const res=await axios.put(`${PATH}/hesap/${id}`,data)
+  return res.data
+}

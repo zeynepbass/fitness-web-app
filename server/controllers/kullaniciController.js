@@ -108,28 +108,49 @@ export const kullaniciDetay = async (req, res) => {
 
 
 export const kullaniciGuncelle = [
-  upload.single("resim"), 
+  upload.single("resim"),
   async (req, res) => {
     try {
       const { id } = req.params;
-      const { ad, soyad, email, parola, kullaniciAdi, hesap, aktif, telefon } = req.body;
-
-      const updateData = {
+      const {
         ad,
         soyad,
         email,
+        parola,
         kullaniciAdi,
         hesap,
         aktif,
         telefon,
-      };
-      if (req.file) {
-        updateData.resim = req.file.filename;
-      }
+        rol,
+        durum,
+      } = req.body;
+
+      let updateData = {};
+
       
-      if (parola) {
-        const hashedParola = await bcrypt.hash(parola, 10);
-        updateData.parola = hashedParola;
+      if (durum === "dondurulmuştur") {
+        updateData.durum = "dondurulmuştur";
+      } else {
+        updateData = {
+          ad,
+          soyad,
+          email,
+          kullaniciAdi,
+          hesap,
+          aktif,
+          telefon,
+          rol,
+          durum,
+        };
+
+        if (req.file) {
+          updateData.resim = req.file.filename;
+        }
+
+        if (parola) {
+          const hashedParola = await bcrypt.hash(parola, 10);
+          updateData.parola = hashedParola;
+        }
       }
 
       const guncellenmisKullanici = await Kullanici.findByIdAndUpdate(
@@ -143,17 +164,22 @@ export const kullaniciGuncelle = [
       }
 
       res.status(200).json({
-        message: "Kullanıcı başarıyla güncellendi",
-        kullanici: guncellenmisKullanici
+        message:
+          durum === "dondurulmuştur"
+            ? "Kullanıcı hesabı donduruldu"
+            : "Kullanıcı başarıyla güncellendi",
+        kullanici: guncellenmisKullanici,
       });
     } catch (error) {
       res.status(500).json({
         message: "Kullanıcı güncellenemedi",
-        error: error.message
+        error: error.message,
       });
     }
   },
 ];
+
+
 
 export const deleteUser = async (req, res) => {
   try {

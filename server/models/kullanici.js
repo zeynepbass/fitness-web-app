@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const kullaniciSchema = new mongoose.Schema({
- adSoayd:{ type: String },
+ adSoyad:{ type: String },
   email: { type: String },
   parola: { type: String },
   kullaniciAdi: { type: String },
@@ -9,7 +9,7 @@ const kullaniciSchema = new mongoose.Schema({
   cupa:{ type: Number,default:0 },
   comment:{ type: String,default:null },
   resim: { type: String,default:null},
-
+  durum:{ type: String,default:null},
   id:{type:String}
 });
 

@@ -1,11 +1,14 @@
 import React from 'react'
+import Favourite from "../screens/Favourite"
+const index = () => {
 
-const page = () => {
   return (
-    <div>
-      asdas
-    </div>
+
+      
+         <Favourite/>
+
+
   )
 }
 
-export default page
+export default index
