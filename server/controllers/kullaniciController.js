@@ -113,15 +113,17 @@ export const kullaniciGuncelle = [
     try {
       const { id } = req.params;
       const {
-        ad,
-        soyad,
+        adSoyad,
         email,
-        parola,
+
         kullaniciAdi,
-        hesap,
-        aktif,
-        telefon,
+        weight,
+        height,
+        hedefKg,
+        kacGun,
+        deneyim,
         rol,
+        resim,
         durum,
       } = req.body;
 
@@ -132,14 +134,17 @@ export const kullaniciGuncelle = [
         updateData.durum = "dondurulmuştur";
       } else {
         updateData = {
-          ad,
-          soyad,
+          adSoyad,
           email,
+  
           kullaniciAdi,
-          hesap,
-          aktif,
-          telefon,
+          weight,
+          height,
+          hedefKg,
+          kacGun,
+          deneyim,
           rol,
+          resim,
           durum,
         };
 
@@ -147,10 +152,6 @@ export const kullaniciGuncelle = [
           updateData.resim = req.file.filename;
         }
 
-        if (parola) {
-          const hashedParola = await bcrypt.hash(parola, 10);
-          updateData.parola = hashedParola;
-        }
       }
 
       const guncellenmisKullanici = await Kullanici.findByIdAndUpdate(

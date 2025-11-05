@@ -17,3 +17,7 @@ export const deleteUserCold=async(id,data)=>{
   const res=await axios.put(`${PATH}/hesap/${id}`,data)
   return res.data
 }
+export const userCurrent=async(id)=>{
+  const res=await axios.get(`${PATH}/kullanici/${id}`)
+  return res.data
+}

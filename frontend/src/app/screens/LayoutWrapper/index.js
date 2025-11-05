@@ -1,23 +1,31 @@
 
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Header from "../Header";
 import SolSidebar from "../SolSidebar";
-import Login from "../Login/index"
+import Login from "../Login/index";
+
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
   const [queryClient] = useState(() => new QueryClient());
- const control=JSON.parse(localStorage.getItem("token"));
+  const [control, setControl] = useState(null); 
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("token");
+      if (stored) {
+        setControl(JSON.parse(stored));
+      }
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       {pathname === "/" ? (
-     
-    
         <>{children}</>
       ) : (
-
         <>
           <Header />
           <div className="flex min-h-[calc(100vh-64px)]">
@@ -26,8 +34,7 @@ export default function LayoutWrapper({ children }) {
             </aside>
 
             <main className="flex-1 p-6 bg-white dark:bg-gray-800">
-              {control ? children : <Login/>}
-    
+              {control?.kullanici?.id ? children : <Login />}
             </main>
           </div>
         </>

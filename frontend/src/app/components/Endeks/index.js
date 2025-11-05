@@ -5,10 +5,10 @@ import Modal from "../Charts";
 import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 
-export default function BMICalculator() {
+export default function BMICalculator({user}) {
   const [open, setOpen] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState(user?.weight);
+  const [height, setHeight] = useState(user?.height);
   const [result, setResult] = useState({ bmi: null, status: "" });
 
   const calculateBMI = (e) => {
@@ -39,7 +39,12 @@ export default function BMICalculator() {
         <h2 className="text-md mb-6 text-center text-gray-800 dark:text-white font-semibold">
           Vücut Kitle Endeksi (BMI) Hesapla
         </h2>
-
+        {result.bmi && (
+          <div className="mt-6 text-center text-gray-800 dark:text-white">
+            <p className="text-lg font-semibold">BMI: {result.bmi}</p>
+            <p className="text-gray-600 dark:text-gray-300">{result.status}</p>
+          </div>
+        )}
         <form onSubmit={calculateBMI} className="space-y-4">
           <InputField
             label="Kilo (kg)"
@@ -60,12 +65,7 @@ export default function BMICalculator() {
           </div>
         </form>
 
-        {result.bmi && (
-          <div className="mt-6 text-center text-gray-800 dark:text-white">
-            <p className="text-lg font-semibold">BMI: {result.bmi}</p>
-            <p className="text-gray-600 dark:text-gray-300">{result.status}</p>
-          </div>
-        )}
+  
       </div>
     </>
   );
