@@ -38,11 +38,11 @@ export default function Select({ people, baslik, onChange }) {
                
              }}
              className={`flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-[#D1D5DB] hover:text-[#9CA3AF]  ${
-               selected.id === person.id ? "bg-gray-100 text-[#9CA3AF] -700" : ""
+               selected.id === person.id ? "bg-gray-100 text-[#9CA3AF]" : ""
              }`}
            >
              <span>{person.name}</span>
-             {selected.id === person.id && <CheckIcon className="h-5 w-5 text-[#9CA3AF] -600" />}
+             {selected.id === person.id && <CheckIcon className="h-5 w-5 text-[#9CA3AF]" />}
            </li>
            
             ))}

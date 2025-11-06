@@ -85,7 +85,7 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6 text-[#9CA3AF] -700"
+                  className="size-6 text-[#9CA3AF]"
                 >
                   <path
                     strokeLinecap="round"
@@ -110,16 +110,16 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
   
           <div className="p-5">
             <header className="mb-2">
-              <h3 className="text-lg font-semibold text-[#9CA3AF] -200 dark:text-[#9CA3AF] -100">
+              <h3 className="text-lg font-semibold text-[#9CA3AF] dark:text-[#9CA3AF] ">
                 {item.baslik} 
               </h3>
             </header>
 
-            <p className="mt-1 text-sm text-[#9CA3AF] -600 dark:text-[#9CA3AF] -300">
+            <p className="mt-1 text-sm text-[#9CA3AF] dark:text-[#9CA3AF] ">
               {item.aciklama}
             </p>
             {item.kacAdim && (
-  <p className="mt-1 text-sm text-[#9CA3AF] -600 dark:text-[#9CA3AF] -300">
+  <p className="mt-1 text-sm text-[#9CA3AF] dark:text-[#9CA3AF] ">
    Günlük <b>{item.kacAdim}</b> adım attım.
   </p>
 )}
@@ -128,10 +128,10 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
 
           {item.email !== email && pathname !== "/kayit-ettiklerin" && (
             <footer className="flex gap-3 flex-wrap pt-2">
-              <button className="flex items-center gap-1 hover:text-[#9CA3AF] -500 transition">
+              <button className="flex items-center gap-1 hover:text-[#9CA3AF] transition">
                 👍 Beğen
               </button>
-              <button className="flex items-center gap-1 hover:text-[#9CA3AF] -500 transition">
+              <button className="flex items-center gap-1 hover:text-[#9CA3AF] transition">
                 💬 Yorum Yap
               </button>
             </footer>

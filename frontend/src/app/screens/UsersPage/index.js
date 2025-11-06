@@ -1,3 +1,4 @@
+
 "use client";
 import { useState } from "react";
 import Login from "../Login";
@@ -12,17 +13,17 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="flex w-full min-h-screen shadow-2xl rounded-2xl overflow-hidden  bg-gray-100 ">
-        <div className="bg-[url('/images/background.jpg')] bg-cover bg-center rounded-br-[5%] w-1/2 flex items-center justify-center">
+    <div className="min-h-screen ">
+      <div className="flex w-full min-h-screen shadow-2xl  overflow-hidden ">
+        <div className="bg-[url('/images/background.jpg')] bg-cover bg-center rounded-r-[10%]  w-1/2 flex items-center justify-center">
           <h1 className="text-white text-[30px] font-bold text-center drop-shadow-lg">
             Hoş Geldin!
           </h1>
         </div>
 
-        <div className="min-h-screen w-1/2 flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen w-1/2 flex items-center justify-center ">
         <div className="w-1/2 flex flex-col">
-            <div className="w-full  bg-gray-100  pt-5 rounded-t-2xl">
+            <div className="w-full  bg-gray-100  pt-5 ">
               <TabMenu
                 activeId={activeId}
                 setActiveId={setActiveId}
@@ -30,7 +31,7 @@ export default function Index() {
               />
             </div>
 
-            <div className="bg-gray w-full   overflow-auto p-6  rounded-b-2xl shadow-gray-100 shadow-md">
+            <div className="w-full   overflow-auto p-6 shadow-gray-100 shadow-md">
               {activeId === 1 ? <Login /> : <Register />}
             </div>
           </div>

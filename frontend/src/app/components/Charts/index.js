@@ -45,10 +45,10 @@ export default function Modal({ open, setOpen }) {
           
 
           <div className="flex items-center justify-between p-4 border-b dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">Analiz</h3>
+            <h3 className="text-xl font-semibold text-[#9CA3AF] dark:text-[#9CA3AF] ">Analiz</h3>
             <button
               onClick={() => setOpen(false)}
-              className="text-[#9CA3AF] -200 hover:text-[#9CA3AF] -200 hover:bg-gray-200 dark:hover:bg-[#D1D5DB] dark:hover:text-[#9CA3AF]  rounded-lg w-8 h-8 flex items-center justify-center"
+              className="text-[#9CA3AF] hover:text-[#9CA3AF] hover:bg-gray-200 dark:hover:bg-[#D1D5DB] dark:hover:text-[#9CA3AF]  rounded-lg w-8 h-8 flex items-center justify-center"
             >
               ✕
             </button>
@@ -112,7 +112,7 @@ export default function Modal({ open, setOpen }) {
           <div className="flex justify-end p-4 border-t dark:border-gray-600">
             <button
               onClick={() => setOpen(false)}
-              className="px-5 py-2.5 bg-gray dark:bg-[#800020] border border-gray-200 dark:border-gray-600 rounded-lg text-sm font-medium text-[#9CA3AF] -200 dark:text-[#9CA3AF] -200 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-[#9CA3AF] "
+              className="px-5 py-2.5 bg-gray dark:bg-[#800020] border border-gray-200 dark:border-gray-600 rounded-lg text-sm font-medium text-[#9CA3AF] dark:text-[#9CA3AF]  hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-[#9CA3AF] "
             >
               Kapat
             </button>

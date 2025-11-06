@@ -14,7 +14,7 @@ export default function Index() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6 absolute right-4 text-[#9CA3AF] -500 cursor-pointer hover:text-[#9CA3AF] -500 transition-colors"
+        className="w-6 h-6 absolute right-4 text-[#9CA3AF] cursor-pointer hover:text-[#9CA3AF] transition-colors"
       >
         <path
           strokeLinecap="round"

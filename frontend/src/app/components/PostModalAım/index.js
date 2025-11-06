@@ -75,13 +75,13 @@ export default function PostModal({ open, setOpen }) {
     <div className="fixed inset-0 z-[99999] flex items-center justify-center ">
       <div className="bg-white dark:bg-[#800020] rounded-lg shadow-lg w-full max-w-lg p-6 relative">
         <button
-          className="absolute top-3 right-3 text-[#9CA3AF] -200 hover:text-[#9CA3AF]  dark:hover:text-[#9CA3AF] "
+          className="absolute top-3 right-3 text-[#9CA3AF] hover:text-[#9CA3AF]  dark:hover:text-[#9CA3AF] "
           onClick={() => setOpen(false)}
         >
           ✕
         </button>
 
-        <h2 className="text-xl font-semibold mb-4 text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
+        <h2 className="text-xl font-semibold mb-4 text-[#9CA3AF] dark:text-[#9CA3AF] ">
           Gönderi Paylaş
         </h2>
 
@@ -126,7 +126,7 @@ export default function PostModal({ open, setOpen }) {
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-[#9CA3AF] -500"
+                className="h-5 w-5 text-[#9CA3AF]"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -135,7 +135,7 @@ export default function PostModal({ open, setOpen }) {
               <span>Fotoğraf</span>
             </label>
 
-            {file && <span className="text-sm text-[#9CA3AF] -600">{file.name}</span>}
+            {file && <span className="text-sm text-[#9CA3AF]">{file.name}</span>}
           </div>
 
           <Button

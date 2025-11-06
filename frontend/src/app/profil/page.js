@@ -63,7 +63,7 @@ export default function ProfileForm() {
   return (
 <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-[#97233F]">
 <div className="w-1/2 justify-center items-center dark:bg-[#800020] bg-gray p-8 rounded-2xl shadow-xl">
-      <h2 className="text-2xl font-bold mb-8 text-center text-[#9CA3AF] -800 dark:text-[#9CA3AF] ">
+      <h2 className="text-2xl font-bold mb-8 text-center text-[#9CA3AF] dark:text-[#9CA3AF] ">
         Profil Güncelle
       </h2>
 
@@ -77,7 +77,7 @@ export default function ProfileForm() {
                 className="w-24 h-24 rounded-full object-cover border-2 border-gray-400"
               />
             ) : (
-              <div className="w-24 h-24 rounded-full bg-gray-200 dark:bg-[#800020] flex items-center justify-center text-[#9CA3AF] -500">
+              <div className="w-24 h-24 rounded-full bg-gray-200 dark:bg-[#800020] flex items-center justify-center text-[#9CA3AF]">
                 Resim Seç
               </div>
             )}
@@ -151,7 +151,7 @@ export default function ProfileForm() {
           />
 
           <div className="md:col-span-2">
-            <label className="block text-[#9CA3AF]  dark:text-[#9CA3AF] -300 font-semibold mb-2">
+            <label className="block text-[#9CA3AF]  dark:text-[#9CA3AF]  font-semibold mb-2">
               Deneyim
             </label>
             <textarea

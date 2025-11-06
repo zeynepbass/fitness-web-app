@@ -36,13 +36,13 @@ export default function BMICalculator({user}) {
         className="max-w-md mx-auto bg-white dark:bg-[#97233F] p-5 rounded-2xl shadow-lg mt-10 cursor-pointer"
         onClick={() => setOpen(true)}
       >
-        <h2 className="text-md mb-6 text-center text-[#9CA3AF] -800 dark:text-[#9CA3AF]  font-semibold">
+        <h2 className="text-md mb-6 text-center text-[#9CA3AF] dark:text-[#9CA3AF]  font-semibold">
           Vücut Kitle Endeksi (BMI) Hesapla
         </h2>
         {result.bmi && (
-          <div className="mt-6 text-center text-[#9CA3AF] -800 dark:text-[#9CA3AF] ">
+          <div className="mt-6 text-center text-[#9CA3AF] dark:text-[#9CA3AF] ">
             <p className="text-lg font-semibold">BMI: {result.bmi}</p>
-            <p className="text-[#9CA3AF] -600 dark:text-[#9CA3AF] -300">{result.status}</p>
+            <p className="text-[#9CA3AF] dark:text-[#9CA3AF] ">{result.status}</p>
           </div>
         )}
         <form onSubmit={calculateBMI} className="space-y-4">

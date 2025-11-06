@@ -104,11 +104,11 @@ export default function Sidebar() {
       />
 
       <div className="mt-5">
-        <h5 className="text-2xl font-bold text-center text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
+        <h5 className="text-2xl font-bold text-center text-[#9CA3AF] dark:text-[#9CA3AF] ">
           Profil Bilgileri
         </h5>
 
-        <h2 className="mb-2 text-lg font-semibold text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
+        <h2 className="mb-2 text-lg font-semibold text-[#9CA3AF] dark:text-[#9CA3AF] ">
           <Link
             href="/profil"
             className="inline-flex items-center px-4 py-3 text-sm font-medium dark:bg-[#97233F] bg-[#800020] text-[#9CA3AF]  rounded-lg hover:bg-[#800020] "
@@ -132,13 +132,13 @@ export default function Sidebar() {
             ⚠️ Hedef gün sayısını aştınız! Yeni bir hedef belirleme zamanı 💪
             <div className="flex gap-2 mt-3">
               <button
-                className="w-full p-4 bg-gray-400 text-[#9CA3AF] -800 font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
+                className="w-full p-4 bg-gray-400 text-[#9CA3AF] font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
                 onClick={() => setOpen(true)}
               >
                 Post Olarak Yayınla
               </button>
               <button
-                className="w-full p-4 bg-gray-200 text-[#9CA3AF] -800 font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
+                className="w-full p-4 bg-gray-200 text-[#9CA3AF] font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
                 onClick={handleSubmit}
               >
                 Yayınlama
