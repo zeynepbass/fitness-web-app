@@ -80,15 +80,15 @@ const rol=token?.kullanici?.rol || "";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-[#800020]  dark:bg-[#800020] rounded-lg shadow-lg w-full max-w-lg p-6 relative">
+      <div className="bg-white dark:bg-[#800020]  rounded-lg shadow-lg w-full max-w-lg p-6 relative">
         <button
-          className="absolute top-3 right-3 text-gray-200 hover:text-gray-800 dark:hover:text-gray"
+          className="absolute top-3 right-3 text-[#9CA3AF] -200 hover:text-[#9CA3AF] -800 dark:hover:text-[#9CA3AF] "
           onClick={() => setOpen(false)}
         >
           ✕
         </button>
 
-        <h2 className="text-xl font-semibold mb-4 text-gray-200 dark:text-gray">
+        <h2 className="text-xl font-semibold mb-4 text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
           Gönderi Paylaş
         </h2>
 
@@ -106,7 +106,8 @@ const rol=token?.kullanici?.rol || "";
             name="aciklama"
             rows={4}
             placeholder="Açıklama girin..."
-            className="w-full border-b placeholder-gray-400 text-[15px] border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full border-b bg-transparent placeholder-gray-400 text-[15px] border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            
             value={form.aciklama}
             onChange={handleChange}
             required
@@ -126,7 +127,7 @@ const rol=token?.kullanici?.rol || "";
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-blue-500"
+                className="h-5 w-5 text-[#9CA3AF] -500"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -136,7 +137,7 @@ const rol=token?.kullanici?.rol || "";
             </label>
 
             {file && (
-              <span className="text-sm text-gray-600">{file.name}</span>
+              <span className="text-sm text-[#9CA3AF] -600">{file.name}</span>
             )}
           </div>
 

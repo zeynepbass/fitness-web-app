@@ -30,11 +30,13 @@ export default function LayoutWrapper({ children }) {
 
           <Header />
           <div className="flex min-h-[calc(100vh-64px)]">
-            <aside className="w-80 bg-gray dark:bg-[#800020] hidden md:block">
-            {pathname =="/profil" && <SolSidebar /> }   
-            </aside>
+       
+            {pathname !== "/profil" && <SolSidebar />}
 
-            <main className="flex-1 p-6 bg-gray dark:bg-[#97233F]">
+
+
+
+            <main className="flex-1 bg-gray dark:bg-[#97233F]">
               {control?.kullanici?.id ? children : <Login />}
             </main>
           </div>

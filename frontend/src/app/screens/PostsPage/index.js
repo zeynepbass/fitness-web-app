@@ -6,7 +6,7 @@ const Index = ({ open, setOpen,posts,email ,handlePin}) => {
 
 
   return (
-    <div className="relative min-h-screen p-4">
+    <div className="relative min-h-screen p-5">
      <Post open={open} setOpen={setOpen}/>
      <Card posts={posts} email={email} handlePin={handlePin}/>
     </div>

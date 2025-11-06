@@ -6,7 +6,7 @@ export default function Index() {
       <InputType
         type="text"
         placeholder="Ara..."
-        className="w-full pr-12"
+ 
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@ export default function Index() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6 absolute right-4 text-gray-500 cursor-pointer hover:text-blue-500 transition-colors"
+        className="w-6 h-6 absolute right-4 text-[#9CA3AF] -500 cursor-pointer hover:text-[#9CA3AF] -500 transition-colors"
       >
         <path
           strokeLinecap="round"

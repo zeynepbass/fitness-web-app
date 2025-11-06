@@ -61,8 +61,9 @@ export default function ProfileForm() {
   
 
   return (
-    <div className="max-w-7xl mx-left dark:bg-[#800020] bg-gray p-8 rounded-2xl shadow-xl mt-10">
-      <h2 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray">
+<div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-[#97233F]">
+<div className="w-1/2 justify-center items-center dark:bg-[#800020] bg-gray p-8 rounded-2xl shadow-xl">
+      <h2 className="text-2xl font-bold mb-8 text-center text-[#9CA3AF] -800 dark:text-[#9CA3AF] ">
         Profil Güncelle
       </h2>
 
@@ -73,10 +74,10 @@ export default function ProfileForm() {
               <img
                 src={image}
                 alt="Profil"
-                className="w-24 h-24 rounded-full object-cover border-2 border-blue-400"
+                className="w-24 h-24 rounded-full object-cover border-2 border-gray-400"
               />
             ) : (
-              <div className="w-24 h-24 rounded-full bg-gray-200 dark:bg-[#800020] flex items-center justify-center text-gray-500">
+              <div className="w-24 h-24 rounded-full bg-gray-200 dark:bg-[#800020] flex items-center justify-center text-[#9CA3AF] -500">
                 Resim Seç
               </div>
             )}
@@ -91,7 +92,7 @@ export default function ProfileForm() {
         </div>
 
         <p className="font-bold">Hedef Kütle Hesapla:</p>
-        <div className="flex bg-[#800020] dark:bg-[#800020] p-3 gap-2">
+        <div className="flex bg-gray-200 p-3 gap-2">
           <InputField
             name="hedefKg"
             type="number"
@@ -150,7 +151,7 @@ export default function ProfileForm() {
           />
 
           <div className="md:col-span-2">
-            <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
+            <label className="block text-[#9CA3AF]  dark:text-[#9CA3AF] -300 font-semibold mb-2">
               Deneyim
             </label>
             <textarea
@@ -159,7 +160,7 @@ export default function ProfileForm() {
               onChange={handleChange}
               placeholder="Deneyimlerinizi yazın..."
               rows="4"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 text-gray-800 dark:text-gray focus:ring-2 focus:ring-blue-400 outline-none"
+              className="w-full px-4  bg-transparent py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-[#9CA3AF]  dark:text-[#9CA3AF]  focus:ring-2 focus:ring-gray-400 outline-none"
             ></textarea>
           </div>
         </div>
@@ -167,7 +168,7 @@ export default function ProfileForm() {
         <div className="flex justify-center pt-4">
           <Button text="Güncelle" type="submit" />
         </div>
-      </form>
+      </form>    </div>
     </div>
   );
 }

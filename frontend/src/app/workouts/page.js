@@ -5,7 +5,7 @@ export default async function WorkoutsPage() {
   const posts = await get(); 
 const res=posts.reverse()
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden p-4">
 
       <Home posts={res} /> 
     </div>

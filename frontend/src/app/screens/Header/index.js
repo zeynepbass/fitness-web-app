@@ -88,7 +88,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-[#800020] dark:bg-[#800020] text-gray px-6 py-4 flex justify-between items-center shadow-md">
+    <nav className="bg-[#800020] dark:bg-[#800020] text-[#9CA3AF]  px-6 py-4 flex justify-between items-center shadow-md">
       <h1
         onClick={() => router.push("/workouts")}
         className="font-bold text-xl tracking-wide cursor-pointer"

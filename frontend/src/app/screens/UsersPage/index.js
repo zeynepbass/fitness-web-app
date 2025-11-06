@@ -13,9 +13,9 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="flex w-full min-h-screen shadow-2xl rounded-2xl overflow-hidden  bg-blue-100 ">
+      <div className="flex w-full min-h-screen shadow-2xl rounded-2xl overflow-hidden  bg-gray-100 ">
         <div className="bg-[url('/images/background.jpg')] bg-cover bg-center rounded-br-[5%] w-1/2 flex items-center justify-center">
-          <h1 className="text-black text-[30px] font-bold text-center drop-shadow-lg">
+          <h1 className="text-white text-[30px] font-bold text-center drop-shadow-lg">
             Hoş Geldin!
           </h1>
         </div>

@@ -94,7 +94,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-full bg-[#800020] h-screen dark:bg-[#800020] relative p-5">
+    <div className="w-80 md:block hidden  bg-[#800020] h-screen dark:bg-[#800020] relative p-5">
       <img
         src={user?.resim || "/default-avatar.png"}
         alt={user?.adSoyad || "Profil Resmi"}
@@ -104,20 +104,20 @@ export default function Sidebar() {
       />
 
       <div className="mt-5">
-        <h5 className="text-2xl font-bold text-center text-gray-200 dark:text-gray">
+        <h5 className="text-2xl font-bold text-center text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
           Profil Bilgileri
         </h5>
 
-        <h2 className="mb-2 text-lg font-semibold text-gray-200 dark:text-gray">
+        <h2 className="mb-2 text-lg font-semibold text-[#9CA3AF] -200 dark:text-[#9CA3AF] ">
           <Link
             href="/profil"
-            className="inline-flex items-center px-4 py-3 text-sm font-medium dark:bg-[#97233F] bg-[#800020] text-gray rounded-lg hover:bg-[#800020] "
+            className="inline-flex items-center px-4 py-3 text-sm font-medium dark:bg-[#97233F] bg-[#800020] text-[#9CA3AF]  rounded-lg hover:bg-[#800020] "
           >
             Profile Git
           </Link>
         </h2>
 
-        <ul className="text-gray list-disc list-inside space-y-1">
+        <ul className="text-[#9CA3AF]  list-disc list-inside space-y-1">
           <li>Ad Soyad: {user?.adSoyad}</li>
           <li>Email: {user?.email}</li>
           <li>Rol: {user?.rol}</li>
@@ -128,17 +128,17 @@ export default function Sidebar() {
         </ul>
         {open && <Modal setOpen={setOpen} open={open} />}
         {showWarning &&    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="p-4 bg-red-600 rounded-lg text-gray font-semibold text-center animate-pulse shadow-lg w-[90%] max-w-md">
+          <div className="p-4 bg-red-600 rounded-lg text-[#9CA3AF]  font-semibold text-center animate-pulse shadow-lg w-[90%] max-w-md">
             ⚠️ Hedef gün sayısını aştınız! Yeni bir hedef belirleme zamanı 💪
             <div className="flex gap-2 mt-3">
               <button
-                className="w-full p-4 bg-gray-400 text-gray-800 font-semibold rounded-xl hover:bg-[#800020] hover:text-gray disabled:bg-gray-300"
+                className="w-full p-4 bg-gray-400 text-[#9CA3AF] -800 font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
                 onClick={() => setOpen(true)}
               >
                 Post Olarak Yayınla
               </button>
               <button
-                className="w-full p-4 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-[#800020] hover:text-gray disabled:bg-gray-300"
+                className="w-full p-4 bg-gray-200 text-[#9CA3AF] -800 font-semibold rounded-xl hover:bg-[#800020] hover:text-[#9CA3AF]  disabled:bg-gray-300"
                 onClick={handleSubmit}
               >
                 Yayınlama
@@ -154,7 +154,7 @@ export default function Sidebar() {
           {link.map((item) => (
             <button
               key={item.id}
-              className="text-gray rounded-md px-3 py-1"
+              className="text-[#9CA3AF]  rounded-md px-3 py-1"
               onClick={item.click}
             >
               {item.name}

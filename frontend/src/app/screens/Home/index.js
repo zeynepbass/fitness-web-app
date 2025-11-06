@@ -78,13 +78,13 @@ export default function Index({posts}) {
   return (
     <>
       <TabMenu activeId={activeId} setActiveId={setActiveId} Menu={menu} />
-      <div className="w-full pt-5">
-        <div className="flex justify-end gap-3">
+      <div className="w-full pt-5 ">
+        <div className="flex justify-end gap-3  z-[999999999999]">
           {activeId === 1 ? (
             <Select people={people} selected={selected} setSelected={setSelected} onChange={onChange}/>
           ) : (
             <button
-              className="w-[50px] bg-[#800020] dark:bg-[#800020] text-gray py-2 rounded-3xl hover:bg-[#800020] "
+              className="w-[50px] bg-[#800020] dark:bg-[#800020] text-[#9CA3AF]  py-2 rounded-3xl hover:bg-[#800020] "
               onClick={() => setOpen(true)}
             >
               +
