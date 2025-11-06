@@ -84,7 +84,7 @@ export default function Index({posts}) {
             <Select people={people} selected={selected} setSelected={setSelected} onChange={onChange}/>
           ) : (
             <button
-              className="w-[50px] bg-blue-500 dark:bg-gray-500 text-white py-2 rounded-3xl hover:bg-blue-600"
+              className="w-[50px] bg-[#800020] dark:bg-[#800020] text-gray py-2 rounded-3xl hover:bg-[#800020] "
               onClick={() => setOpen(true)}
             >
               +

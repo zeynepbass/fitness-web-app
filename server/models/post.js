@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema(
     email: { type: String},
     rol: { type: String},
     resim: { type: String, default: null }, 
+    kacAdim: { type: String, default: null }, 
   },
   { timestamps: true } 
 );

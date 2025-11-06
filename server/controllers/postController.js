@@ -24,7 +24,7 @@ export const create = [
   upload.single("resim"), 
   async (req, res) => {
     try {
-      const { baslik, aciklama, email,rol } = req.body;
+      const { baslik, aciklama, email,rol ,kacAdim} = req.body;
 
       if (!baslik || !aciklama) {
         return res.status(400).json({ message: "Başlık ve açıklama zorunludur." });
@@ -34,6 +34,7 @@ export const create = [
         baslik,
         aciklama,
         email,
+        kacAdim,
         rol,
         resim: req.file ? `/uploads/${req.file.filename}` : null,
       });

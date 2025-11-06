@@ -33,14 +33,14 @@ export default function BMICalculator({user}) {
       <Modal open={open} setOpen={setOpen} />
 
       <div
-        className="max-w-md mx-auto bg-white dark:bg-gray-700 p-5 rounded-2xl shadow-lg mt-10 cursor-pointer"
+        className="max-w-md mx-auto bg-gray dark:bg-[#97233F] p-5 rounded-2xl shadow-lg mt-10 cursor-pointer"
         onClick={() => setOpen(true)}
       >
-        <h2 className="text-md mb-6 text-center text-gray-800 dark:text-white font-semibold">
+        <h2 className="text-md mb-6 text-center text-gray-800 dark:text-gray font-semibold">
           Vücut Kitle Endeksi (BMI) Hesapla
         </h2>
         {result.bmi && (
-          <div className="mt-6 text-center text-gray-800 dark:text-white">
+          <div className="mt-6 text-center text-gray-800 dark:text-gray">
             <p className="text-lg font-semibold">BMI: {result.bmi}</p>
             <p className="text-gray-600 dark:text-gray-300">{result.status}</p>
           </div>

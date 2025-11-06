@@ -41,14 +41,14 @@ export default function Modal({ open, setOpen }) {
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-black/50">
       <div className="relative w-full max-w-4xl h-[50vh] overflow-y-auto p-4">
-        <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg flex flex-col">
+        <div className="bg-gray dark:bg-[#800020] rounded-lg shadow-lg flex flex-col">
           
 
           <div className="flex items-center justify-between p-4 border-b dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Analiz</h3>
+            <h3 className="text-xl font-semibold text-gray-200 dark:text-gray">Analiz</h3>
             <button
               onClick={() => setOpen(false)}
-              className="text-gray-400 hover:text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white rounded-lg w-8 h-8 flex items-center justify-center"
+              className="text-gray-200 hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray rounded-lg w-8 h-8 flex items-center justify-center"
             >
               ✕
             </button>
@@ -59,7 +59,7 @@ export default function Modal({ open, setOpen }) {
             {data.stats.map(({ id, label, value }) => (
               <span
                 key={id}
-                className="flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-600 rounded-xl p-2 min-w-[80px] text-center text-sm"
+                className="flex flex-col items-center justify-center bg-gray-100 dark:bg-[#800020] rounded-xl p-2 min-w-[80px] text-center text-sm"
               >
                 <strong>{label}</strong>
                 <span>{value}</span>
@@ -112,7 +112,7 @@ export default function Modal({ open, setOpen }) {
           <div className="flex justify-end p-4 border-t dark:border-gray-600">
             <button
               onClick={() => setOpen(false)}
-              className="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-900 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="px-5 py-2.5 bg-gray dark:bg-[#800020] border border-gray-200 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-200 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray"
             >
               Kapat
             </button>

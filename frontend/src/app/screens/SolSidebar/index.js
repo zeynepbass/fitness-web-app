@@ -1,123 +1,167 @@
-
 "use client";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import Endeks from "../../components/Endeks";
-import Link from "next/link"
-import {deleteUser,deleteUserCold,userCurrent} from "../../services/loginService"
-import { useQuery } from '@tanstack/react-query';
-export default function index() {
-  const control=JSON.parse(localStorage.getItem("token"));
+import { useMutation } from "@tanstack/react-query";
+import Modal from "../../components/PostModalAım";
+import {
+  deleteUser,
+  deleteUserCold,
+  userCurrent,
+} from "../../services/loginService";
+
+export default function Sidebar() {
+  const [control, setControl] = useState(null);
+  const [showWarning, setShowWarning] = useState(false);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  if (pathname === "/profil") return null;
-  const userId=control?.kullanici?.id
-  const deleteUserData=()=>{
-    deleteUser(userId);
-    alert("Ayrılmana Çok Üzüldük :(")
-    localStorage.clear()
-    router.push("/")
-  }
-  const coldUser=()=>{
-    const data = { durum: "dondurulmuştur" };
-    deleteUserCold(userId,data);
-    router.push("/")
-  }
-  const link = [
-    { id: 1, name: "Hesabı Sil", click:deleteUserData },
-    { id: 2, name: "Hesabı Dondur",click:coldUser },
-  ];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("token");
+      if (stored) {
+        setControl(JSON.parse(stored));
+      }
+    }
+  }, []);
+
+  const userId = control?.kullanici?.id;
+
   const {
     data: user,
     isLoading,
-    isError
+    isError,
   } = useQuery({
     queryKey: ["userCurrent", userId],
     queryFn: () => userCurrent(userId),
     enabled: !!userId,
   });
 
+  useEffect(() => {
+    if (!user?.baslangicTarihi || !user?.kacGun) return;
+
+    const startDate = new Date(user.baslangicTarihi);
+    const today = new Date();
+    const diffDays = Math.ceil(
+      Math.abs(today - startDate) / (1000 * 60 * 60 * 24)
+    );
+
+    if (diffDays > user.kacGun) setShowWarning(true);
+  }, [user]);
+
+  const deleteUserData = () => {
+    deleteUser(userId);
+    alert("Ayrılmana Çok Üzüldük :(");
+    localStorage.clear();
+    router.push("/");
+  };
+
+  const coldUser = () => {
+    deleteUserCold(userId, { durum: "dondurulmuştur" });
+    router.push("/");
+  };
+  const mutation = useMutation({
+    mutationFn: ({ id, data }) => deleteUserCold(id, data),
+    onSuccess: (data) => {
+      console.log("✅ başarılı:", data);
+    },
+    onError: (error) => {
+      console.error("❌ hata", error);
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = {
+      hedefKg: 0,
+      kacGun: 0,
+    };
+
+    mutation.mutate({ id: userId, data: form });
+  };
+
+  if (pathname === "/profil" || !control) return null;
   if (isLoading) return <p>Yükleniyor...</p>;
   if (isError) return <p>Bir hata oluştu.</p>;
 
+  const link = [
+    { id: 1, name: "Hesabı Sil", click: deleteUserData },
+    { id: 2, name: "Hesabı Dondur", click: coldUser },
+  ];
+
   return (
-    <div className="w-full bg-blue-500 h-screen dark:bg-gray-800 relative p-5">
+    <div className="w-full bg-[#800020] h-screen dark:bg-[#800020] relative p-5">
+      <img
+        src={user?.resim || "/default-avatar.png"}
+        alt={user?.adSoyad || "Profil Resmi"}
+        width="100"
+        height="100"
+        className="mx-auto block rounded-full object-cover "
+      />
 
-{user?.resim ? (
-  <img
-    src={user.resim}
-    alt={user?.adSoyad || "Profil Resmi"}
-    width="100"
-    height="100"
-    className="mx-auto block rounded-full object-cover border-2 border-blue-400"
-  />
-) : (
-  <img
-    src="/default-avatar.png"
-    alt="Varsayılan Profil"
-    width="100"
-    height="100"
-    className="mx-auto block rounded-full border-2 border-blue-400"
-  />
-)}
-
-  
-    <div className="mt-5">
-
-        <h5 className="mb-2 text-2xl font-bold text-center tracking-tight text-gray-900 dark:text-white">
+      <div className="mt-5">
+        <h5 className="text-2xl font-bold text-center text-gray-200 dark:text-gray">
           Profil Bilgileri
         </h5>
 
-  
-      <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-        <Link
-          href="/profil"
-          className="inline-flex items-center px-4 py-3 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
-        >
-          Profile Git
-          <svg
-            className="w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
+        <h2 className="mb-2 text-lg font-semibold text-gray-200 dark:text-gray">
+          <Link
+            href="/profil"
+            className="inline-flex items-center px-4 py-3 text-sm font-medium dark:bg-[#97233F] bg-[#800020] text-gray rounded-lg hover:bg-[#800020] "
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </Link>
-      </h2>
-  
-      <ul className="max-w-md space-y-1 text-white list-disc list-inside dark:text-gray-400">
-        <li>Ad Soyad: {user?.adSoyad}</li>
-        <li>Email: {user?.email}</li>
-        <li>Rol: {user?.rol}</li>
-        <li>Hedef gün: {user?.kacGun}</li>
-        <li>Hedef kg: {user?.hedefKg}</li>
-        <li>Boy: {user?.height}</li>
-        <li>Ağırlık: {user?.height}</li>
-      </ul>
-      {control?.kullanici?.rol === "Eğitmen" && <Endeks  user={user}/>}
+            Profile Git
+          </Link>
+        </h2>
 
-    
-  
-      <div className="absolute bottom-0 left-1 ">
-        {link.map((item) => (
-          <button
-            key={item.id}
-            className=" text-white rounded-md px-3 py-1"
-            onClick={item.click}
-          >
-            {item.name}
-          </button>
-        ))}
+        <ul className="text-gray list-disc list-inside space-y-1">
+          <li>Ad Soyad: {user?.adSoyad}</li>
+          <li>Email: {user?.email}</li>
+          <li>Rol: {user?.rol}</li>
+          <li>Hedef gün: {user?.kacGun}</li>
+          <li>Hedef kg: {user?.hedefKg}</li>
+          <li>Boy: {user?.height}</li>
+          <li>Ağırlık: {user?.weight}</li>
+        </ul>
+        {open && <Modal setOpen={setOpen} open={open} />}
+        {showWarning &&    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="p-4 bg-red-600 rounded-lg text-gray font-semibold text-center animate-pulse shadow-lg w-[90%] max-w-md">
+            ⚠️ Hedef gün sayısını aştınız! Yeni bir hedef belirleme zamanı 💪
+            <div className="flex gap-2 mt-3">
+              <button
+                className="w-full p-4 bg-gray-400 text-gray-800 font-semibold rounded-xl hover:bg-[#800020] hover:text-gray disabled:bg-gray-300"
+                onClick={() => setOpen(true)}
+              >
+                Post Olarak Yayınla
+              </button>
+              <button
+                className="w-full p-4 bg-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-[#800020] hover:text-gray disabled:bg-gray-300"
+                onClick={handleSubmit}
+              >
+                Yayınlama
+              </button>
+            </div>
+          </div>
+        </div>}
+     
+
+        {control?.kullanici?.rol === "Eğitmen" && <Endeks user={user} />}
+
+        <div className="absolute bottom-0 left-1">
+          {link.map((item) => (
+            <button
+              key={item.id}
+              className="text-gray rounded-md px-3 py-1"
+              onClick={item.click}
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-  
   );
 }

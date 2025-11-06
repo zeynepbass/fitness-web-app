@@ -19,14 +19,14 @@ export default function Select({ people, baslik, onChange }) {
         <button
           type="button"
           onClick={() => setSelect(!openSelect)}
-          className="w-full flex justify-between items-center bg-white border border-gray-300 rounded-md py-2 px-3 text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full flex justify-between items-center bg-gray border border-gray-300 rounded-md py-2 px-3 text-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <span>{selected.name}</span>
           <ChevronUpDownIcon className="h-5 w-5 text-gray-500" />
         </button>
 
         {openSelect && (
-          <ul className="absolute z-10 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-auto">
+          <ul className="absolute z-10 w-full bg-gray border border-gray-200 rounded-md shadow-lg max-h-60 overflow-auto">
             {people.map((person) => (
              <li
              key={person.id}
@@ -37,7 +37,7 @@ export default function Select({ people, baslik, onChange }) {
                  onChange(person.name); 
                
              }}
-             className={`flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-indigo-600 hover:text-white ${
+             className={`flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-indigo-600 hover:text-gray ${
                selected.id === person.id ? "bg-indigo-100 text-indigo-700" : ""
              }`}
            >

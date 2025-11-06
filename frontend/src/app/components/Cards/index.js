@@ -35,7 +35,7 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
       {posts.map((item) => (
         <article
           key={item._id}
-          className="p-2 m-3 w-full rounded-2xl overflow-hidden shadow-sm bg-white dark:bg-gray-800 transition-colors"
+          className="p-2 m-3 w-full rounded-2xl overflow-hidden shadow-sm bg-gray dark:bg-[#800020] transition-colors"
           role="article"
         >
 
@@ -97,7 +97,7 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
             )}
           </div>
 
-          {/* Görsel */}
+
           <Image
             src={`http://localhost:5233${item.resim}`}
             alt={item.baslik || "Gönderi Görseli"}
@@ -107,17 +107,22 @@ export default function Card({ posts,setCurrent, email, handlePin }) {
             className="object-cover p-2 rounded-xl transition-transform duration-300 hover:scale-105"
           />
 
-          {/* İçerik */}
+  
           <div className="p-5">
             <header className="mb-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                {item.baslik} <span>🎖️</span>
+              <h3 className="text-lg font-semibold text-gray-200 dark:text-gray-100">
+                {item.baslik} 
               </h3>
             </header>
 
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
               {item.aciklama}
             </p>
+            {item.kacAdim && (
+  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+   Günlük <b>{item.kacAdim}</b> adım attım.
+  </p>
+)}
           </div>
 
 

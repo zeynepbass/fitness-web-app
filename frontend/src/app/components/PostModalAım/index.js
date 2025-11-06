@@ -1,24 +1,23 @@
-
 "use client";
 import { useState } from "react";
 import Button from "../Button";
 import InputType from "../InputField";
 import { useMutation } from "@tanstack/react-query";
-import { create,get } from "../../services/postService";
+import { create } from "../../services/postService";
 
 export default function PostModal({ open, setOpen }) {
   const [file, setFile] = useState(null);
-  const token =JSON.parse(localStorage.getItem("token"));
+  const token = JSON.parse(localStorage.getItem("token"));
   const email = token?.kullanici?.email || "";
-const rol=token?.kullanici?.rol || "";
+  const rol = token?.kullanici?.rol || "";
   const [form, setForm] = useState({
     baslik: "",
     aciklama: "",
     resim: null,
     email: email,
-    rol:rol
+    rol: rol,
+    kacAdim: "",
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +26,6 @@ const rol=token?.kullanici?.rol || "";
       [name]: value,
     }));
   };
-
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -38,49 +36,44 @@ const rol=token?.kullanici?.rol || "";
     }));
   };
 
-
   const mutation = useMutation({
     mutationFn: create,
     onSuccess: () => {
-
       alert("Gönderi başarıyla paylaşıldı!");
-      setForm({ baslik: "", aciklama: "", resim: null });
+      setForm({ baslik: "", aciklama: "", resim: null, kacAdim: "" });
       setOpen(false);
       setFile(null);
     },
     onError: (error) => {
-
       alert(`Gönderi paylaşılırken bir hata oluştu. ${error}`);
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    if (!form.baslik || !form.aciklama || !form.resim) {
+
+    if (!form.baslik || !form.aciklama || !form.resim || !form.kacAdim) {
       alert("Lütfen tüm alanları doldurun!");
       return;
     }
-  
 
     const formData = new FormData();
-    formData.append("baslik", form.baslik);
+    formData.append("baslik", form.baslik + "🎖️");
     formData.append("aciklama", form.aciklama);
+    formData.append("kacAdim", form.kacAdim);
     formData.append("rol", form.rol);
-    
+
     formData.append("email", form.email);
     formData.append("resim", form.resim);
-  
 
     mutation.mutate(formData);
-
   };
-  
+
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-[#800020]  dark:bg-[#800020] rounded-lg shadow-lg w-full max-w-lg p-6 relative">
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-gray dark:bg-[#800020] rounded-lg shadow-lg w-full max-w-lg p-6 relative">
         <button
           className="absolute top-3 right-3 text-gray-200 hover:text-gray-800 dark:hover:text-gray"
           onClick={() => setOpen(false)}
@@ -95,17 +88,24 @@ const rol=token?.kullanici?.rol || "";
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <InputType
             type="text"
-            placeholder="Başlık girin"
+            placeholder="Neler yedin?"
             required
             name="baslik"
             value={form.baslik}
             onChange={handleChange}
           />
-
+          <InputType
+            name="kacAdim"
+                        type="number"
+            placeholder="Günlük kaç adım attın?"
+            required
+            value={form.kacAdim}
+            onChange={handleChange}
+          />
           <textarea
             name="aciklama"
             rows={4}
-            placeholder="Açıklama girin..."
+            placeholder="Yemekte nelere dikkat ettin?"
             className="w-full border-b placeholder-gray-400 text-[15px] border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={form.aciklama}
             onChange={handleChange}
@@ -135,13 +135,11 @@ const rol=token?.kullanici?.rol || "";
               <span>Fotoğraf</span>
             </label>
 
-            {file && (
-              <span className="text-sm text-gray-600">{file.name}</span>
-            )}
+            {file && <span className="text-sm text-gray-600">{file.name}</span>}
           </div>
 
           <Button
-            text={mutation.isPending ? "Gönderiliyor..." : "Gönder"}
+            text={mutation.isPending ? "Yayınlanıyor..." : "Yayınla"}
             type="submit"
             disabled={mutation.isPending}
           />

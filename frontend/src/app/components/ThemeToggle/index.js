@@ -16,7 +16,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="px-4 py-2  text-white dark:text-white rounded"
+      className="px-4 py-2  text-gray dark:text-gray rounded"
     >
       {darkMode ? (
         <svg

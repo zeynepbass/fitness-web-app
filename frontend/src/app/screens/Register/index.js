@@ -7,13 +7,12 @@ import Button from "../../components/Button";
 import Select from "../../components/Select";
 import { registerUser } from "../../services/loginService";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 export default function Register() {
   const people = [
     { id: 1, name: "Eğitmen" },
     { id: 2, name: "Eğitici" },
   ];
-const router=useRouter();
+
   const [form, setForm] = useState({
     adSoyad: "",
     email: "",
@@ -26,7 +25,7 @@ const router=useRouter();
     onSuccess: (data) => {
       console.log("✅ Kayıt başarılı:", data);
       alert("Kayıt başarılı! Giriş yapabilirsiniz.");
-      router.push("/")
+     
     },
     onError: (error) => {
       console.error("❌ Kayıt hatası:", error);
